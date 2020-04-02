@@ -1,4 +1,4 @@
-let uploadBtn, fileLoader, urlBtn, urlInput, inputImg, canvas, loading;
+let uploadBtn, fileLoader, urlBtn, urlInput, inputImg, canvas, canvas2, loading;
 
 async function requestExternalImage(imageUrl) {
   const res = await fetch('fetch_external_image', {
@@ -63,11 +63,13 @@ function initDomAndEvents() {
   urlBtn = document.getElementById('url-btn');
   urlInput = document.getElementById('imgUrlInput');
   inputImg = document.getElementById('inputImg');
+  inputImg = document.getElementById('inputImg');
   canvas = document.getElementById('overlay');
+  canvas2 = document.getElementById('overlay2');
   download = document.getElementById('download');
 
   download.onclick = () => {
-    const dataUrl = canvas.toDataURL('image/png');
+    const dataUrl = canvas2.toDataURL('image/png');
     saveFile(dataUrl, 'avatar.png');
   };
 
@@ -98,9 +100,10 @@ async function updateResults() {
   if (!isFaceDetectionModelLoaded()) {
     return;
   }
-  loading.style.display = 'none';
+  // loading.style.display = 'none';
   const results = await faceapi.detectAllFaces(inputImg).withFaceLandmarks();
   faceapi.matchDimensions(canvas, inputImg);
+  faceapi.matchDimensions(canvas2, inputImg);
   const resizedResults = faceapi.resizeResults(results, inputImg);
   console.log('resizedResults', resizedResults)
 
@@ -122,12 +125,12 @@ async function updateResults() {
   }
 
 
-  // drawing(canvas, {
-  //   info,
-  //   imgSrc: inputImg.src,
-  //   width: canvas.width,
-  //   height: canvas.height,
-  // });
+  drawing(canvas2, {
+    info,
+    imgSrc: inputImg.src,
+    width: canvas2.width,
+    height: canvas2.height,
+  });
 }
 
 async function run() {

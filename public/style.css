@@ -11,17 +11,9 @@ body {
     font-family        : Georgia, "Times New Roman", Times, serif;
     font-size          : 14px;
     line-height        : 18px;
-    background-color   : #ac3800;
+    background-color   : #eee;
     background-repeat  : repeat-x;
     background-position: top
-}
-
-#homepage {
-    background-image: url(images/body_homepage.png)
-}
-
-#subpage {
-    background-image: url(images/body_subpage.png)
 }
 
 h1,
@@ -354,7 +346,7 @@ ul.list_bullet li a:hover {
 }
 
 .middle_content {
-    flex       : 1 1 500px;
+    flex       :1;
     color      : #fff;
     padding-top: 30px;
 }
@@ -376,21 +368,14 @@ ul.list_bullet li a:hover {
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-#inputImg {
-    width               : 100%;
-    border              : 8px solid transparent;
-    -moz-border-image   : url(images/slider_frame.png) 8 8 round;
-    -webkit-border-image: url(images/slider_frame.png) 8 8 round;
-    -o-border-image     : url(images/slider_frame.png) 8 8 round;
-    border-image        : url(images/slider_frame.png) 8 8 round;
-}
-
-#overlay {
+.overlay {
     position: absolute;
-    left    : 8px;
-    top     : 8px;
+    left    : 0;
+    top     : 0;
 }
-
+.theme-default:first-child {
+    margin-right: 30px;
+}
 .menu {
     padding: 50px 0;
     text-align: right;
