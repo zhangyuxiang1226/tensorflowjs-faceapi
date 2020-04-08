@@ -1,4 +1,4 @@
-let uploadBtn, fileLoader, urlBtn, urlInput, inputImg, canvas, canvas2, loading;
+let uploadBtn, fileLoader, urlBtn, urlInput, inputImg, inputImg2, canvas, canvas2, loading;
 
 async function requestExternalImage(imageUrl) {
   const res = await fetch('fetch_external_image', {
@@ -27,6 +27,7 @@ async function requestExternalImage(imageUrl) {
 async function loadImageFromUrl(url) {
   const img = await requestExternalImage(url);
   inputImg.src = img.src;
+  inputImg2.src = img.src;
   updateResults();
 }
 
@@ -63,7 +64,7 @@ function initDomAndEvents() {
   urlBtn = document.getElementById('url-btn');
   urlInput = document.getElementById('imgUrlInput');
   inputImg = document.getElementById('inputImg');
-  inputImg = document.getElementById('inputImg');
+  inputImg2 = document.getElementById('inputImg2');
   canvas = document.getElementById('overlay');
   canvas2 = document.getElementById('overlay2');
   download = document.getElementById('download');
@@ -86,6 +87,7 @@ function readURL(input) {
 
     reader.onload = function(e) {
       inputImg.src = e.target.result;
+      inputImg2.src = e.target.result;
       updateResults();
     };
 
